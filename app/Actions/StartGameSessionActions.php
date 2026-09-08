@@ -2,7 +2,6 @@
 
 namespace App\Actions;
 
-use App\Http\Requests\StartGameSessionRequest;
 use App\Http\Resources\GameSessionQuestionResource;
 use App\Models\GameSession;
 use App\Models\GameSessionQuestion;

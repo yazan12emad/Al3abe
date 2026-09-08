@@ -2,10 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\GameSessionRequest;
 use App\Http\Requests\StartGameSessionRequest;
 use App\Actions\StartGameSessionActions;
-use App\Models\GameSession;
 use Illuminate\Http\Request;
 
 class GameSessionController extends Controller
