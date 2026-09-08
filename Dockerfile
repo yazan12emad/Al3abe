@@ -10,10 +10,8 @@ RUN apt-get update && apt-get install -y \
     libonig-dev \
     libxml2-dev \
     libicu-dev \
-    libpq-dev \
     nginx \
-    nodejs \
-    npm \
+    ca-certificates \
     && docker-php-ext-install \
         pdo_mysql \
         mbstring \
@@ -25,6 +23,12 @@ RUN apt-get update && apt-get install -y \
         zip \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# Install Node.js 22
+RUN curl -fsSL https://deb.nodesource.com/setup_22.x | bash - \
+    && apt-get install -y nodejs \
+    && npm --version \
+    && node --version
 
 # Install Composer
 COPY --from=composer:2 /usr/bin/composer /usr/bin/composer
@@ -40,7 +44,7 @@ RUN composer install \
     --optimize-autoloader \
     --no-interaction
 
-# Install and build frontend assets
+# Install frontend dependencies and build assets
 RUN npm ci && npm run build
 
 # Laravel permissions
