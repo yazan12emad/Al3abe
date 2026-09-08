@@ -8,19 +8,17 @@ use Illuminate\Http\Request;
 class CategoryController extends Controller
 {
 
-    public function allCategories()
+    public function getCategories()
     {
         try {
-            $categories = Category::select(['id', 'name', 'description', 'image_path'])->get();
-            return $this->jsonResponse($categories, 200);
-        } catch (\Exception $e) {
+            $categories = Category::select(['id', 'name', 'description', 'image_path'])
+                ->has('questions')
+                ->get();
+            return $this->jsonResponse($categories);
+        } catch (\Exception) {
             return $this->jsonResponse('There was an error retrieving categories', 500);
         }
     }
-
-
-
-    // get the categories ID and number of questions
 
 
     public function store(Request $request)

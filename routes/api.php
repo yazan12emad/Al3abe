@@ -10,7 +10,7 @@ use Illuminate\Support\Facades\Route;
 Route::get('games',[GamesController::class,'games']);
 
 // return all the categories
-Route::get('categories' , [CategoryController::class, 'allCategories']);
+Route::get('categories' , [CategoryController::class, 'getCategories']);
 // start game session
 Route::post('start-game-request' , [GameSessionController::class, 'sessionStart']);
 
