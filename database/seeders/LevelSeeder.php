@@ -16,15 +16,19 @@ class LevelSeeder extends Seeder
         DB::table('levels')->insert([
             [
                 'id' => 1,
-                'name' => 'Hard',
+                'level_name' => 'Hard',
+                'number' => 1
             ],
             [
                 'id' => 2,
-                'name' => 'Medium',
+                'level_name' => 'Medium',
+                'number' => 2
             ],
             [
                 'id' => 3,
-                'name' => 'Easy',
+                'level_name' => 'Easy',
+                'number' => 2
+
             ],
         ]);
     }
